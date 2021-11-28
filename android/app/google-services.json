@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "875926659411",
+    "project_id": "ajopay-24e73",
+    "storage_bucket": "ajopay-24e73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875926659411:android:ad4ff2abf9e5d0423c01a6",
+        "android_client_info": {
+          "package_name": "com.ajopay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875926659411-nvqk4ff47d0829umdltc3gfoi9hl2cbg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ajopay",
+            "certificate_hash": "3825756b9b9688ee6b0b332997490db0f590d014"
+          }
+        },
+        {
+          "client_id": "875926659411-tr4q1jvqpm61vbmuuhtsqcqnkp1op8sk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEI82kAEs2ymD3FS8hWk-ckbARkNCk6io"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875926659411-tr4q1jvqpm61vbmuuhtsqcqnkp1op8sk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
