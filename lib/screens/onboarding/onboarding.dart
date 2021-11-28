@@ -1,3 +1,4 @@
+import 'package:ajopay/screens/auth/sign_in.dart';
 import 'package:ajopay/utils/utils.dart';
 import 'package:ajopay/widgets/app_button/app_button.dart';
 import 'package:ajopay/widgets/onboarding_card/onboarding_card.dart';
@@ -22,15 +23,22 @@ class _OnBoardingState extends State<OnBoarding> {
     });
   }
 
+  void navigateToLogin() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+  }
+
+    void navigateToRegister() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           height: size.height,
           width: size.width,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
               const SizedBox(
@@ -78,19 +86,25 @@ class _OnBoardingState extends State<OnBoarding> {
               const SizedBox(
                 height: 20,
               ),
-              AppButton(
-                  onPressed: () {},
-                  textColor: baseLightColor,
-                  buttonColor: primaryColor,
-                  buttonText: "Sign Up"),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: AppButton(
+                    onPressed: navigateToLogin,
+                    textColor: baseLightColor,
+                    buttonColor: primaryColor,
+                    buttonText: "Sign Up"),
+              ),
               const SizedBox(
                 height: 20,
               ),
-              AppButton(
-                  onPressed: () {},
-                  textColor: primaryColor,
-                  buttonColor: greyColor,
-                  buttonText: "Login"),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: AppButton(
+                    onPressed: navigateToLogin,
+                    textColor: primaryColor,
+                    buttonColor: greyColor,
+                    buttonText: "Login"),
+              ),
               const SizedBox(
                 height: 20,
               ),

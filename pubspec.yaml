@@ -59,11 +59,12 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
+  # To add assets to your application, add an assets section, ylike this:
   assets:
     - assets/svg/onboarding_icon_1.svg
     - assets/svg/onboarding_icon_2.svg
     - assets/svg/onboarding_icon_3.svg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

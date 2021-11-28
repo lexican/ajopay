@@ -15,27 +15,35 @@ class OnBoardingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SvgPicture.asset(assetImage),
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-              color: baseBlack, fontSize: 32, fontWeight: FontWeight.w700),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-              color: baseBlackLight, fontSize: 16, fontWeight: FontWeight.w700),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SvgPicture.asset(assetImage),
+          const SizedBox(
+            height: 40,
+          ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                color: baseBlack, fontSize: 32, fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            description,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                color: baseBlackLight,
+                fontSize: 16,
+                fontWeight: FontWeight.w700),
+          ),
+        ],
+      ),
     );
   }
 }
