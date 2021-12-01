@@ -58,7 +58,7 @@ class PasswordInputTextField extends StatelessWidget {
               ),
               suffixIcon: IconButton(
                 icon: Icon(
-                  !obsecureText ? Icons.visibility : Icons.visibility_off,
+                  obsecureText ? Icons.visibility : Icons.visibility_off,
                   color: Theme.of(context).primaryColorDark,
                 ),
                 onPressed: () {

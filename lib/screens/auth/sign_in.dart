@@ -205,6 +205,7 @@ class _SignInState extends State<SignIn> {
                     controller: passwordController,
                     hintText: "Password",
                     autofocus: false,
+                    obsecureText: _obscurePassword,
                     setObscureText: setObscurePassword,
                     validator: (value) => validateInput(value!, "Password"),
                   ),

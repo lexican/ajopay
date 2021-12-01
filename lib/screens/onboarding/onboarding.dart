@@ -92,7 +92,7 @@ class _OnBoardingState extends State<OnBoarding> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: AppButton(
-                    onPressed: navigateToLogin,
+                    onPressed: navigateToRegister,
                     textColor: baseLightColor,
                     buttonColor: primaryColor,
                     buttonText: "Sign Up"),

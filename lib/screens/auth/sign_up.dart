@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,18 +37,18 @@ class _SignUpState extends State<SignUp> {
 
   final _formKey = GlobalKey<FormState>();
 
-  String validateEmail(String email) {
+  String? validateEmail(String email) {
     if (!isEmail(email)) {
       return 'Please enter a valid email';
     }
-    return '';
+    return null;
   }
 
-  String validateInput(String text, String label) {
+  String? validateInput(String text, String label) {
     if (text.isEmpty) {
       return 'Please enter ' + label;
     }
-    return '';
+    return null;
   }
 
   void navigateToLogin() {
@@ -86,6 +87,7 @@ class _SignUpState extends State<SignUp> {
     final form = _formKey.currentState;
     form?.save();
     if (validateAndSave()) {
+      print("Here");
       if (passwordController.text == confirmPasswordController.text) {
         FirebaseFirestore.instance
             .collection('users')
@@ -135,7 +137,8 @@ class _SignUpState extends State<SignUp> {
       } else {
         showCenterShortToast("Password must match");
       }
-    } else {}
+    } else {
+    }
     setState(() {
       isLoading = false;
     });
@@ -170,11 +173,22 @@ class _SignUpState extends State<SignUp> {
   }
 
   String? pwdValidator(String value) {
-    if (value.length < 8) {
-      return 'Password must be longer than 8 characters';
+    if (value.length < 6) {
+      return 'Password must be longer than 6 characters';
     } else {
       return null;
     }
+  }
+
+  String? validateMobile(String value) {
+    String patttern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+    RegExp regExp = RegExp(patttern);
+    if (value.isEmpty) {
+      return 'Please enter mobile number';
+    } else if (!regExp.hasMatch(value)) {
+      return 'Please enter valid mobile number';
+    }
+    return null;
   }
 
   @override
@@ -323,7 +337,21 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: InputTextField(
+                    keyboardType: TextInputType.phone,
+                    controller: phoneNumberController,
+                    hintText: "Phone Number",
+                    autofocus: false,
+                    validator: (value) => validateMobile(value!),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: PasswordInputTextField(
+                    obsecureText: _obscurePassword,
                     setObscureText: setObscurePassword,
                     controller: passwordController,
                     hintText: "Password",
@@ -337,6 +365,7 @@ class _SignUpState extends State<SignUp> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: PasswordInputTextField(
+                    obsecureText: _obscureConfirmPassword,
                     setObscureText: setObscureConfirmPassword,
                     controller: confirmPasswordController,
                     hintText: "Confirm Password",
@@ -389,13 +418,31 @@ class _SignUpState extends State<SignUp> {
                 const SizedBox(
                   height: 30,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: AppButton(
-                      onPressed: validateAndSubmit,
-                      textColor: baseLightColor,
-                      buttonColor: primaryColor,
-                      buttonText: "Sign Up"),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(9.0)),
+                              primary: primaryColor,
+                              backgroundColor: primaryColor),
+                          child: isLoading
+                              ? showCircularProgress()
+                              : const Text("Sign Up",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: baseLightColor,
+                                      fontFamily: "Inter",
+                                      fontWeight: FontWeight.w600)),
+                          onPressed: validateAndSubmit,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 20,
