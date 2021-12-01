@@ -36,6 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   dots_indicator: ^2.0.0
   flutter_svg: ^0.23.0+1
+  firebase_auth: ^3.2.0
+  firebase_core: ^1.10.0
+  cloud_firestore: ^2.2.0
+  shared_preferences: ^2.0.9
+  fluttertoast: ^8.0.7
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +69,7 @@ flutter:
     - assets/svg/onboarding_icon_1.svg
     - assets/svg/onboarding_icon_2.svg
     - assets/svg/onboarding_icon_3.svg
+    - assets/images/google.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

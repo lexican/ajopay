@@ -1,4 +1,5 @@
 import 'package:ajopay/screens/auth/sign_in.dart';
+import 'package:ajopay/screens/auth/sign_up.dart';
 import 'package:ajopay/utils/utils.dart';
 import 'package:ajopay/widgets/app_button/app_button.dart';
 import 'package:ajopay/widgets/onboarding_card/onboarding_card.dart';
@@ -24,11 +25,13 @@ class _OnBoardingState extends State<OnBoarding> {
   }
 
   void navigateToLogin() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const SignIn()));
   }
 
-    void navigateToRegister() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+  void navigateToRegister() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const SignUp()));
   }
 
   @override
