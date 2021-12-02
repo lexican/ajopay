@@ -1,8 +1,13 @@
 import 'dart:async';
 
+import 'package:ajopay/screens/home/home.dart';
 import 'package:ajopay/screens/onboarding/onboarding.dart';
 import 'package:ajopay/utils/utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -19,10 +24,24 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future navigateToOnBoarding() async {
-    Timer(
-        const Duration(seconds: 3),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const OnBoarding())));
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool authSignedIn = prefs.getBool('auth') ?? false;
+
+    final User? user = _auth.currentUser;
+
+    if (authSignedIn == true) {
+      if (user != null) {
+        Timer(
+            const Duration(seconds: 3),
+            () => Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const Home())));
+      } else {
+        Timer(
+            const Duration(seconds: 3),
+            () => Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const OnBoarding())));
+      }
+    }
   }
 
   @override

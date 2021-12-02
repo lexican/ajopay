@@ -70,6 +70,9 @@ flutter:
     - assets/svg/onboarding_icon_2.svg
     - assets/svg/onboarding_icon_3.svg
     - assets/images/google.jpg
+    - assets/svg/home.svg
+    - assets/svg/transactions.svg
+    - assets/svg/profile.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
